@@ -1,0 +1,1 @@
+start_message = "Welcome to clicker bot!"

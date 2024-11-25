@@ -3,6 +3,7 @@ import logging
 from aiogram.client.default import DefaultBotProperties
 from config import get_config, Config
 import asyncio
+from handlers import client_handlers
 
 
 config: Config = get_config()
@@ -13,6 +14,8 @@ logging.basicConfig(level=logging.INFO)
 async def main():
     bot = Bot(config.bot_token, default=DefaultBotProperties(parse_mode="HTML"))
     dp = Dispatcher()
+
+    dp.include_router(client_handlers.router)
 
     await dp.start_polling(bot)
 

@@ -1,5 +1,6 @@
 __all__ = (
-    "router"
+    "callback_handlers",
+    "client_handlers"
 )
 
-from .client_handlers import router
+from client.handlers import callback_handlers, client_handlers

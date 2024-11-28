@@ -19,12 +19,11 @@ class Base(DeclarativeBase):
 class User(Base):
     __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
-    user_id: Mapped[int] = mapped_column()
+    user_id: Mapped[int] = mapped_column(primary_key=True)
     clicks: Mapped[int] = mapped_column(default=0)
 
     def __repr__(self):
-        return f"Users(id={self.id!r}, name={self.user_id!r}, clicks={self.clicks!r})"
+        return f"Users(user_id={self.user_id!r}, clicks={self.clicks!r})"
 
 engine = create_engine(f"postgresql://{config.db_user}:{config.db_password}@{config.db_url}")
 

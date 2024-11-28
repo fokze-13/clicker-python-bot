@@ -32,12 +32,15 @@ Base.metadata.create_all(engine)
 
 def new_user(user_id: int):
     with Session(engine) as session:
-        user = User(
-            user_id=user_id
-        )
+        stmt = select(User).where(User.user_id == user_id)
 
-        session.add(user)
-        session.commit()
+        if not session.scalar(stmt):
+            user = User(
+                user_id=user_id
+            )
+
+            session.add(user)
+            session.commit()
 
 def update_clicks(user_id: int, clicks: int):
     with Session(engine) as session:
